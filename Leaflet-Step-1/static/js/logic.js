@@ -79,3 +79,37 @@ function createFeatures(eqdata) {
     function onEachFeature(feature, layer) {
         layer.bindPopup('<h4>Place: ' + feature.properties.place + '</h4><h4>Date: ' + new Date(feature.properties.time) + '</h4><h4>Magnitude: ' + feature.properties.mag + '</h4><h4>USGS Event Page: <a href=' + feature.properties.url + " target='_blank'>Click here</a></h4>", {maxWidth: 400})
     }
+
+    const layerToMap = L.geoJSON(eqdata, {
+        onEachFeature: onEachFeature,
+        pointToLayer: function(feature, latlng) {
+            let radius = feature.properties.mag * 4.5;
+
+            if (feature.properties.mag > 5) {
+                fillcolor = '#f06b6b';
+            }
+            else if (feature.properties.mag >= 4) {
+                fillcolor = '#f0936b';
+            }
+            else if (feature.properties.mag >= 3) {
+                fillcolor = '#f3ba4e';
+            }
+            else if (feature.properties.mag >= 2) {
+                fillcolor = '#f3db4c';
+            }
+            else if (feature.properties.mag >= 1) {
+                fillcolor = '#e1f34c';
+            }
+            else  fillcolor = '#b7f34d';
+
+            return L.circleMarker(latlng, {
+                radius: radius,
+                color: 'black',
+                fillColor: fillcolor,
+                fillOpacity: 1,
+                weight: 1
+            });
+        }
+    });
+    createMap(layerToMap);
+} 

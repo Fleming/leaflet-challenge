@@ -1,16 +1,3 @@
 // API key
-const API_KEY = "YOUR API KEY HERE!";
+const API_KEY = "AIzaSyB8IAMrnI074vA0XH2AH1Kj1lrvkIWnsUc";
 
-const attribution = `
-  Map data & copy;
-  <a href="https://www.openstreetmap.org/">
-    OpenStreetMap
-    </a>
-  contributors,
-    <a href="https://creativecommons.org/licenses/by-sa/2.0/">
-      CC-BY-SA
-    </a>
-    , Imagery ©
-  <a href="https://www.mapbox.com/">
-    Mapbox
-    </a>`;
