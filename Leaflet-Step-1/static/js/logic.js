@@ -58,4 +58,24 @@ function createMap(earthquakes) {
                     '#b7f34d';
     }
 
-    
+    var legend = L.control({position: 'bottomright'});
+
+    legend.onAdd = function(myMap) {
+        const div = L.DomUtil.create('div', 'info legend')
+        const magnitudes = [0, 1, 2, 3, 4, 5]
+        const labels = []
+
+        for (let i = 0; i < magnitudes.length; i++) {
+            div.innerHTML +=
+            '<i style="background:' + getColor(magnitudes[i] + 1) + '"></i>' + magnitudes[i] + (magnitudes[i + 1] ? '&ndash;' + magnitudes[i + 1] + '<br>' : '+');
+        }
+        return div
+    };
+    legend.addTo(myMap);
+
+}
+
+function createFeatures(eqdata) {
+    function onEachFeature(feature, layer) {
+        layer.bindPopup('<h4>Place: ' + feature.properties.place + '</h4><h4>Date: ' + new Date(feature.properties.time) + '</h4><h4>Magnitude: ' + feature.properties.mag + '</h4><h4>USGS Event Page: <a href=' + feature.properties.url + " target='_blank'>Click here</a></h4>", {maxWidth: 400})
+    }
