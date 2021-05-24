@@ -1,2 +1,4 @@
 // https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson
 
+const link = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson';
+
