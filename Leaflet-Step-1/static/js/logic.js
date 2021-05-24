@@ -38,3 +38,24 @@ function createMap(earthquakes) {
     const overlayMap = {
         Earthquakes: earthquakes
     };
+
+    const myMap = L.map('map', {
+        center: [36.7126875, -120.476189],
+        zoom: 4,
+        layers: [outdoors, earthquakes]
+    });
+
+    L.control.layers(baseMap, overlayMap, {
+        collapsed: false
+    }).addTo(myMap);
+
+    function getColor(d) {
+        return d > 5 ? '#f06b6b' :
+            d > 4 ? '#f0936b' :
+            d > 3 ? '#f3ba4e' :
+            d > 2 ? '#f3db4c' :
+            d > 1 ? '#e1f34c' :
+                    '#b7f34d';
+    }
+
+    
