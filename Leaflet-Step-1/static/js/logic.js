@@ -10,9 +10,31 @@ d3.json(link).then((data) => {
 });
 
 function createMap(earthquakes) {
-    // assign the different mapbox styles
+   
     const satellite = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         maxZoom: 20,
         id: 'mapbox.satellite',
         accessToken: API_KEY
     });
+
+    const grayscale = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        maxZoom: 20,
+        id: 'mapbox.light',
+        accessToken: API_KEY
+    });
+
+    const outdoors = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        maxZoom: 20,
+        id: 'mapbox.outdoors',
+        accessToken: API_KEY
+    });
+
+    const baseMap = {
+        'Satellite': satellite,
+        'Grayscale': grayscale,
+        'Outdoors': outdoors
+    };
+
+    const overlayMap = {
+        Earthquakes: earthquakes
+    };
