@@ -13,7 +13,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: API_KEY
 }).addTo(myMap);
 
-// Use this link to get jeojason data
+// get jeojason data
 var link = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 function getColor(i) {
   return i > 90 ? "#EA2C2C" :
@@ -40,7 +40,7 @@ d3.json(link, function (data) {
       // Called on each feature
       onEachFeature: function (feature, layer) {
 
-          // Giving each feature a pop-up with information pertinent to it
+          // pop-up with information relevant to it
           layer.bindPopup("<h1>" + feature.properties.mag + "</h1> <hr> <h2>" + feature.properties.place + "</h2>");
 
       }
